@@ -17,7 +17,7 @@ import org.lwjgl.opengl.Display;
 import jw6jw6jw6.CombatSimulator.objects.*;
 public class Player extends Paddle
 {
-	private float velX = 0,velY = 0, speedIncrement = 8f, maxSpeed = 10f;
+	private float velX = 0,velY = 0, speedIncrement = 9f, maxSpeed = 10f;
 	public float health=100;
 	public boolean boost = false;
 	private float timer = 0;
@@ -80,10 +80,10 @@ public class Player extends Paddle
 			glColor3f(0,1,0);
 			glBegin(GL_QUADS);
 			{
-				glVertex3f(-15,-5,0);
-				glVertex3f(-15,5,0);
-				glVertex3f(15,5,0);
-				glVertex3f(15,-5,0);
+				glVertex3f(-30,-5,0);
+				glVertex3f(-30,5,0);
+				glVertex3f(30,5,0);
+				glVertex3f(30,-5,0);
 			}
 			glEnd();
 		}

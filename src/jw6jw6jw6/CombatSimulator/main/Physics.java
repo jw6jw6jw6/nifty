@@ -8,7 +8,7 @@ public class Physics
 {
 	public static boolean collidesInBox(Paddle a, Ball b, float sideLength)
 	{
-		if(Math.abs(a.getX() - b.getX()) <= sideLength && b.getY() - a.getY() <= 8)
+		if(Math.abs(a.getX() - b.getX()) <= 32 && b.getY() - a.getY() <= 8 && b.getY() - a.getY() >0)
 			return true;
 		return false;
 	}

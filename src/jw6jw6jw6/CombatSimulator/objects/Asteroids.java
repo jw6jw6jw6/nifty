@@ -22,7 +22,7 @@ public class Asteroids extends Game
 	private Random rand = new Random();
 	public static Player player1;
 	public static Ball ball;
-	private int count = 0;
+	private int lives = 3;
 //	public static ArrayList<Block> addObjectNextTick = new ArrayList<GameObject>();
 	public void init()
 	{
@@ -65,6 +65,10 @@ public class Asteroids extends Game
 				pause = true;
 			timer5=0;
 		}
+		if(Keyboard.isKeyDown(Keyboard.KEY_R))
+		{
+			lives++;
+		}
 		if(pause)
 			return;
 		
@@ -81,6 +85,13 @@ public class Asteroids extends Game
 			}
 		
 		super.runTick(time);
+		if(ball.shouldBeUnloaded && lives >=0)
+		{
+			lives--;
+			ball = new Ball(Display.getWidth()/2, Display.getHeight()/2, rand.nextInt(5)+1, rand.nextInt(7)+5,12f);
+			ships.add(ball);
+			
+		}
 	}
 	
 	public void render()
