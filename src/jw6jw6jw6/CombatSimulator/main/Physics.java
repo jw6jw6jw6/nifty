@@ -15,7 +15,7 @@ public class Physics
 	
 	public static boolean collidesInBox1(GameObject object, Ball b)
 	{
-		if(Math.abs(object.getX() - b.getX()) <= 8 && Math.abs(object.getY() - b.getY()) <= 4)
+		if(Math.abs(object.getX() - b.getX()) <= 12 && Math.abs(object.getY() - b.getY()) <= 4)
 			return true;
 		return false;
 	}

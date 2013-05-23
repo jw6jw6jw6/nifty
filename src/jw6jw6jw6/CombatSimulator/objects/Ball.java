@@ -65,10 +65,10 @@ public class Ball extends GameObject
 			glTranslatef(x,y,0);
 			glBegin(GL_QUADS);
 			{
-				glVertex3f(-2,2,0);
-				glVertex3f(-2,-2,0);
-				glVertex3f(2,-2,0);
-				glVertex3f(2,2,0);
+				glVertex3f(-3,3,0);
+				glVertex3f(-3,-3,0);
+				glVertex3f(3,-3,0);
+				glVertex3f(3,3,0);
 				
 			}
 			glEnd();

@@ -40,7 +40,7 @@ public class Asteroids extends Game
 		ships.add(player1);
 		ball = new Ball(Display.getWidth()/2, Display.getHeight()/2, rand.nextInt(5)+1, rand.nextInt(7)+5,12f);
 		ships.add(ball);
-		float tmpy = Display.getHeight() - 2;
+		float tmpy = Display.getHeight() - 6;
 		int count = 0;
 		for(int q = 8; q>0; q--)
 		{
