@@ -77,7 +77,7 @@ public class Player extends Paddle
 		glPushMatrix();
 		{
 			glTranslatef(x,y,0);
-			glColor3f(0,1,0);
+			glColor3f(1,1,0);
 			glBegin(GL_QUADS);
 			{
 				glVertex3f(-30,-5,0);

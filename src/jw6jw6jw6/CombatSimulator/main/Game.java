@@ -8,6 +8,7 @@ public abstract class Game
 {
 	public static ArrayList<Block> objects = new ArrayList<Block>();
 	public ArrayList<GameObject> ships = new ArrayList<GameObject>();
+	public ArrayList<Ball> balls = new ArrayList<Ball>();
 	
 	public void runTick(long time)
 	{
@@ -15,6 +16,19 @@ public abstract class Game
 		while(iterator.hasNext())
 		{
 			Block object = iterator.next();
+			if(object.shouldBeUnloaded)
+			{
+				iterator.remove();
+				continue;
+			}
+			
+			object.runTick(time);
+		}
+		
+		Iterator<Ball> iterator1 = balls.iterator();
+		while(iterator.hasNext())
+		{
+			Ball object = iterator1.next();
 			if(object.shouldBeUnloaded)
 			{
 				iterator.remove();
@@ -43,6 +57,9 @@ public abstract class Game
 	public void render()
 	{
 		for(GameObject object : objects)
+			object.render();
+		
+		for(Ball object : balls)
 			object.render();
 		
 		for(GameObject object : ships)

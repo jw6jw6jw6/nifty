@@ -34,7 +34,7 @@ public class Paddle extends GameObject
 		glPushMatrix();
 		{
 			glTranslatef(x, y, 0);
-			glColor3f(.1f,1,0);
+			glColor3f(1,0,1);
 			glRotatef(direction, 0, 0, 1);
 			glBegin(GL_TRIANGLES);
 			{

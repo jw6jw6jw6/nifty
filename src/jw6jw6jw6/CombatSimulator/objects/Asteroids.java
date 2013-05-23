@@ -23,7 +23,6 @@ public class Asteroids extends Game
 	public static Player player1;
 	public static Ball ball;
 	private int lives = 3;
-//	public static ArrayList<Block> addObjectNextTick = new ArrayList<GameObject>();
 	public void init()
 	{
 		try 
@@ -39,14 +38,14 @@ public class Asteroids extends Game
 		player1 = new Player(Display.getWidth()/2, 50);
 		ships.add(player1);
 		ball = new Ball(Display.getWidth()/2, Display.getHeight()/2, rand.nextInt(5)+1, rand.nextInt(7)+5,12f);
-		ships.add(ball);
-		float tmpy = Display.getHeight() - 6;
+		balls.add(ball);
+		float tmpy = Display.getHeight() - 8;
 		int count = 0;
 		for(int q = 8; q>0; q--)
 		{
 			count++;
-			for(float tmpx=14; tmpx <= 784; tmpx+=16)
-				objects.add(new Block(tmpx, tmpy-(8*count), q));
+			for(float tmpx=14; tmpx <= 784; tmpx+=15)
+				objects.add(new Block(tmpx, tmpy-(12*count), q));
 		}
 		System.out.println(objects.size());
 	}
@@ -67,29 +66,32 @@ public class Asteroids extends Game
 		}
 		if(Keyboard.isKeyDown(Keyboard.KEY_R))
 		{
-			lives++;
+			balls.add(new Ball(Display.getWidth()/2, Display.getHeight()/2, rand.nextInt(5)+1, rand.nextInt(7)+5,12f));
 		}
+		
 		if(pause)
 			return;
-		
-		if(Physics.collidesInBox(player1, ball, 16f))
+		for(Ball ball1: balls)
+		if(Physics.collidesInBox(player1, ball1, 16f))
 		{
-			ball.paddleFlipDirection();
+			ball1.paddleFlipDirection();
 		}
-		
+		for(Ball ball1: balls)
 		for(Block object: objects)
-			if(Physics.collidesInBox1(object,ball))
+			if(Physics.collidesInBox1(object,ball1))
 			{
-				ball.flipDirection();
+				ball1.flipDirection();
 				object.damage -=1;
+				System.out.println("Block Collision");
 			}
-		
+		for(Ball ball1:balls)
+			ball1.runTick(time);
 		super.runTick(time);
 		if(ball.shouldBeUnloaded && lives >=0)
 		{
 			lives--;
 			ball = new Ball(Display.getWidth()/2, Display.getHeight()/2, rand.nextInt(5)+1, rand.nextInt(7)+5,12f);
-			ships.add(ball);
+			balls.add(ball);
 			
 		}
 	}
